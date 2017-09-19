@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-device" version="0.2.3">
+    <name>Popdeem SDK</name>
+    <description>Popdeem SDK Cordova Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,popdeem</keywords>
+
+    <asset src="www/popdeem.js" target="www/popdeem.js"/>
+    <js-module src="www/popdeem.js" name="popdeem">
+        <clobbers target="popdeem" />
+    </js-module>
+
+    <platform name="ios">
+
+        <pods-config ios-min-version="9.0" use-frameworks="true">
+        </pods-config>
+        <pod name="PopdeemSDK" />
+        <pod name="PopdeemSDK/UIKit" />
+
+        <config-file target="config.xml" parent="/widget">
+          <feature name="Popdeem">
+            <param name="ios-package" value="Popdeem" />
+          </feature>
+        </config-file>
+
+        <header-file src="src/ios/Popdeem.h" target-dir="PopdeemPlugin"/>
+        <source-file src="src/ios/Popdeem.m" target-dir="PopdeemPlugin"/>
+      </platform>
+</plugin>
