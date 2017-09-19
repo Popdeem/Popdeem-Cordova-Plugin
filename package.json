@@ -1,0 +1,27 @@
+{
+  "name": "Popdeem-Cordova-Plugin",
+  "version": "0.2.3",
+  "description": "Popdeem SDK Cordova Plugin",
+  "cordova": {
+    "id": "cordova-plugin-device",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NQuinn27/Popdeem-Cordova-Plugin.git"
+  },
+  "keywords": [
+    "cordova",
+    "popdeem",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Niall Quinn",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/NQuinn27/Popdeem-Cordova-Plugin/issues"
+  },
+  "homepage": "https://github.com/NQuinn27/Popdeem-Cordova-Plugin#readme"
+}
