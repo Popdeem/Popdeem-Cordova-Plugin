@@ -1,5 +1,5 @@
 {
-  "name": "Popdeem-Cordova-Plugin",
+  "name": "popdeem-cordova-plugin",
   "version": "0.2.3",
   "description": "Popdeem SDK Cordova Plugin",
   "cordova": {
