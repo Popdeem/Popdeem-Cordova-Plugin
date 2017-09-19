@@ -13,10 +13,8 @@
 
     <platform name="ios">
 
-        <pods-config ios-min-version="9.0" use-frameworks="true">
-        </pods-config>
-        <pod name="PopdeemSDK" />
-        <pod name="PopdeemSDK/UIKit" />
+        <framework src="PopdeemSDK" type="podspec" spec="~> 1.0.0" />
+        <framework src="PopdeemSDK/UIKit" type="podspec" spec="~> 1.0.0" />
 
         <config-file target="config.xml" parent="/widget">
           <feature name="Popdeem">
