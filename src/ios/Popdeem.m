@@ -3,7 +3,7 @@
 @implementation Popdeem
 
 - (void) enableSocialLogin:(CDVInvokedUrlCommand*)command {
-  NSInteger* numberOfPrompts = [[command arguments] objectAtIndex:0] integerValue];
+  NSInteger* numberOfPrompts = [[[command arguments] objectAtIndex:0] integerValue];
 
   // [PopdeemSDK enableSocialLoginWithNumberOfPrompts:numberOfPrompts];
 
