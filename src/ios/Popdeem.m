@@ -1,12 +1,11 @@
 #import "Popdeem.h"
-#import "PopdeemSDK.h"
 
 @implementation Popdeem
 
 - (void) enableSocialLogin:(CDVInvokedUrlCommand*)command {
   NSInteger* numberOfPrompts = [[command arguments] objectAtIndex:0] integerValue];
 
-  [PopdeemSDK enableSocialLoginWithNumberOfPrompts:numberOfPrompts];
+  // [PopdeemSDK enableSocialLoginWithNumberOfPrompts:numberOfPrompts];
 
   CDVPluginResult* result = [CDVPluginResult
                             resultWithStatus:CDVCommandStatus_OK
