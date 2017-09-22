@@ -2,6 +2,6 @@
 
 @interface Popdeem : CDVPlugin
 
-- (void) greet:(CDVInvokedUrlCommand*)command;
+- (void) enableSocialLogin:(CDVInvokedUrlCommand*)command;
 
 @end
