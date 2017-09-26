@@ -5,3 +5,11 @@ module.exports = {
   }
 
 };
+
+module.exports = {
+
+  pushPopdeemHome: function (successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "Popdeem", "pushPopdeemHome", []);
+  }
+
+};
