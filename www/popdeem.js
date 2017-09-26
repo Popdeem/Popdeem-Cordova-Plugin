@@ -2,7 +2,7 @@ module.exports = {
     enableSocialLogin: function (numberOfPrompts, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "Popdeem", "enableSocialLogin", [numberOfPrompts]);
     },
-    presentPopdeemHome: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "Popdeem", "presentPopdeemHome", []);
+    pushPopdeemHome: function (successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "Popdeem", "pushPopdeemHome", []);
     }
 };
