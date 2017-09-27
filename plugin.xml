@@ -25,4 +25,19 @@
         <header-file src="src/ios/Popdeem.h" target-dir="PopdeemPlugin"/>
         <source-file src="src/ios/Popdeem.m" target-dir="PopdeemPlugin"/>
       </platform>
+
+      <platform name="android">
+
+          <framework src="com.popdeem.sdk:sdk:1.2.9.6" />
+
+          <config-file target="config.xml" parent="/*">
+            <feature name="Popdeem">
+              <param name="android-package" value="com.popdeem.cordova.plugin" />
+            </feature>
+          </config-file>
+
+          <source-file src="src/android/Popdeem.java" target-dir="src/com/popdeem/cordova/plugin"/>
+        </platform>
+
+
 </plugin>
