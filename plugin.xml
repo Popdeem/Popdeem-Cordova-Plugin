@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="popdeem-cordova-plugin" version="0.3.21">
+        id="popdeem-cordova-plugin" version="0.3.22">
     <name>Popdeem SDK</name>
     <description>Popdeem SDK Cordova Plugin</description>
     <license>Apache 2.0</license>
@@ -29,14 +29,14 @@
       <platform name="android">
 
           <framework src="com.popdeem.sdk:sdk:1.2.9.8" />
+          <config-file parent="/*" target="res/xml/config.xml">
+      			<feature name="Popdeem">
+      				<param name="android-package" value="com.popdeem.cordova.plugin.Popdeem" />
+      				<param name="onload" value="true" />
+      			</feature>
+      		</config-file>
 
-          <config-file target="config.xml" parent="/*">
-            <feature name="Popdeem">
-              <param name="android-package" value="com.popdeem.cordova.plugin" />
-            </feature>
-          </config-file>
-
-          <source-file src="src/com/popdeem/cordova/plugin/Popdeem.java" target-dir="src/com/popdeem/cordova/plugin"/>
+          <source-file src="src/android/Popdeem.java" target-dir="src/com/popdeem/cordova/plugin" />
         </platform>
 
 
