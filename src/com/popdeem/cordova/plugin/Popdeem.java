@@ -5,7 +5,18 @@ import org.apache.cordova.CallbackContext;
 
 public class Popdeem extends CordovaPlugin {
 
-  private void enableSocialLogin(String message, CallbackContext callbackContext) {
+
+  @Override
+  public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+      if ("enableSocialLogin".equals(action)) {
+          this.enableSocialLogin(args.getInteger(0));
+          callbackContext.success();
+          return true;
+      }
+      return false;  // Returning false results in a "MethodNotFound" error.
+  }
+
+  private void enableSocialLogin(int numberOfPrompts, CallbackContext callbackContext) {
     if (message != null && message.length() > 0) {
       CharSequence text = "Hello toast!";
       int duration = Toast.LENGTH_SHORT;
