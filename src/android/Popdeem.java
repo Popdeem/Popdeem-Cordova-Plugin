@@ -25,8 +25,8 @@ public class Popdeem extends CordovaPlugin {
   private void showComingSoon(CallbackContext callbackContext) {
     String message = "Android Coming Soon";
     int duration = Toast.LENGTH_SHORT;
-    Context context=this.cordova.getActivity().getApplicationContext();
-    Toast toast = Toast.makeText(context, text, duration);
+    Context context = this.cordova.getActivity().getApplicationContext();
+    Toast toast = Toast.makeText(context, message, duration);
     toast.show();
   }
 
