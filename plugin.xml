@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="popdeem-cordova-plugin" version="0.9.2">
+        id="popdeem-cordova-plugin" version="0.9.3">
     <name>Popdeem SDK</name>
     <description>Popdeem SDK Cordova Plugin</description>
     <license>Apache 2.0</license>
@@ -24,6 +24,8 @@
 
         <header-file src="src/ios/Popdeem.h" target-dir="PopdeemPlugin"/>
         <source-file src="src/ios/Popdeem.m" target-dir="PopdeemPlugin"/>
+        <header-file src="src/ios/AppDelegate+popdeem.h" target-dir="PopdeemPlugin"/>
+        <source-file src="src/ios/AppDelegate+popdeem.m" target-dir="PopdeemPlugin"/>
       </platform>
 
       <platform name="android">
