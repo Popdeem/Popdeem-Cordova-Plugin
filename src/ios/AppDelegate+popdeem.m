@@ -44,6 +44,13 @@
   }
   [PopdeemSDK withAPIKey:popdeemApiKey];
 
+  NSString *popdeemThemeName = [PDUtils getThemeFileName];
+  if (popdeemThemeName == nil) {
+    NSLog(@"Popdeem Theme not specified in info.plist");
+  } else {
+    [PopdeemSDK setUpThemeFile:popdeemThemeName];
+  }
+
   return result;
 }
 
