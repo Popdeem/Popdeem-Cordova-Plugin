@@ -6,15 +6,16 @@
 //
 //
 
-#import "AppDelegate+notification.h"
-#import "Popdeem.h"
+#import "AppDelegate+popdeem.h"
+#import "PopdeemSDK.h"
 #import "PDUtils.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <objc/runtime.h>
 
+@implementation AppDelegate (popdeem)
 // its dangerous to override a method from within a category.
 // Instead we will use method swizzling. we set this up in the load call.
-+ (void)load
++ (void) load
 {
     NSLog(@"SWIZZLE LOAD");
     Method original, swizzled;
@@ -22,12 +23,6 @@
     original = class_getInstanceMethod(self, @selector(application: didFinishLaunchingWithOptions:));
     swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didFinishLaunchingWithOptions:));
     method_exchangeImplementations(original, swizzled);
-
-    // no need to swizzle for methods which we can use NSNotificationCenter
-    // App did become active
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                         selector:@selector(_applicationDidBecomeActive:)
-                                             name:UIApplicationDidBecomeActiveNotification object:nil];
 
 }
 
@@ -45,7 +40,7 @@
   NSError *keyError;
   NSString *popdeemApiKey = [PDUtils getPopdeemApiKey:&keyError];
   if (keyError != nil) {
-    NSLog("Popdeem API Key Error. Check Key is in .plist file.");
+    NSLog(@"Popdeem API Key Error. Check Key is in .plist file.");
   }
   [PopdeemSDK withAPIKey:popdeemApiKey];
 
@@ -71,6 +66,8 @@
   return NO;
 }
 
-- (void) _applicationDidBecomeActive:(UIApplication *)application {
+- (void) applicationDidBecomeActive:(UIApplication *)application {
   [FBSDKAppEvents activateApp];
 }
+
+@end
