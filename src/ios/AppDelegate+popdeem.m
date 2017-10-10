@@ -17,7 +17,6 @@
 // Instead we will use method swizzling. we set this up in the load call.
 + (void) load
 {
-    NSLog(@"SWIZZLE LOAD");
     Method original, swizzled;
 
     original = class_getInstanceMethod(self, @selector(application: didFinishLaunchingWithOptions:));
@@ -27,7 +26,6 @@
 }
 
 - (BOOL) swizzled_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  NSLog(@"SWIZZLE AppActive");
   // This actually calls the original method over in AppDelegate. Equivilent to calling super
 	// on an overrided method, this is not recursive, although it appears that way?
   BOOL result = [self swizzled_application:application didFinishLaunchingWithOptions:launchOptions];
