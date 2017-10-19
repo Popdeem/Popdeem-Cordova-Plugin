@@ -1,7 +1,7 @@
 package com.popdeem.cordova.plugin;
+import com.popdeem.sdk.core.PopdeemSDK;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -10,30 +10,30 @@ import org.json.JSONException;
 
 public class Popdeem extends CordovaPlugin {
 
+    private static final int LOGIN_VIEW_ID = 10101010;
 
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-    this.showComingSoon(callbackContext);
-      // if ("enableSocialLogin".equals(action)) {
-      //     this.enableSocialLogin(args.getInt(0), callbackContext);
-      //     callbackContext.success();
-      //     return true;
-      // }
+
+       if ("enableSocialLogin".equals(action)) {
+           this.enableSocialLogin(args.getInt(0), callbackContext);
+           callbackContext.success();
+           return true;
+       }
+       if ("pushPopdeemHome".equals(action)){
+          this.pushPopdeemHome(callbackContext);
+          callbackContext.success();
+           return true;
+        }
       return false;  // Returning false results in a "MethodNotFound" error.
   }
 
-  private void showComingSoon(CallbackContext callbackContext) {
-    String message = "Android Coming Soon";
-    int duration = Toast.LENGTH_SHORT;
-    Context context = this.cordova.getActivity().getApplicationContext();
-    Toast toast = Toast.makeText(context, message, duration);
-    toast.show();
-  }
-
   private void enableSocialLogin(int numberOfPrompts, CallbackContext callbackContext) {
+      PopdeemSDK.enableSocialMultiLogin(this.cordova.getActivity().getClass(), numberOfPrompts);
   }
 
   private void pushPopdeemHome(CallbackContext callbackContext) {
+      PopdeemSDK.showHomeFlow(this.cordova.getActivity());
   }
 
 }
