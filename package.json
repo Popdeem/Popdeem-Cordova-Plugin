@@ -1,6 +1,6 @@
 {
   "name": "popdeem-cordova-plugin",
-  "version": "0.9.11",
+  "version": "0.9.12",
   "description": "Popdeem SDK Cordova Plugin",
   "cordova": {
     "id": "cordova-plugin-device",
