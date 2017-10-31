@@ -37,16 +37,14 @@
   //Popdeem Setup
   NSError *keyError;
   NSString *popdeemApiKey = [PDUtils getPopdeemApiKey:&keyError];
-  if (keyError != nil) {
-    NSLog(@"Popdeem API Key Error. Check Key is in .plist file.");
-  }
-  [PopdeemSDK withAPIKey:popdeemApiKey];
-
-  NSString *popdeemThemeName = [PDUtils getThemeFileName];
-  if (popdeemThemeName == nil) {
-    NSLog(@"Popdeem Theme not specified in info.plist");
-  } else {
-    [PopdeemSDK setUpThemeFile:popdeemThemeName];
+  if (popdeemApiKey != nil) {
+    [PopdeemSDK withAPIKey:popdeemApiKey];
+    NSString *popdeemThemeName = [PDUtils getThemeFileName];
+    if (popdeemThemeName == nil) {
+      NSLog(@"Popdeem Theme not specified in info.plist");
+    } else {
+      [PopdeemSDK setUpThemeFile:popdeemThemeName];
+    }
   }
 
   return result;
