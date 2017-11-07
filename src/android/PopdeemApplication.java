@@ -1,9 +1,12 @@
+package com.popdeem.cordova.plugin;
 import android.app.Application;
 
-public class MyCustomApplication extends Application {
+import com.popdeem.sdk.core.PopdeemSDK;
 
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+public class PopdeemApplication extends Application {
+
+	public void onCreate() {
+		super.onCreate();
 		PopdeemSDK.initializeSDK(this);
 	}
 

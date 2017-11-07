@@ -42,7 +42,7 @@ public class Popdeem extends CordovaPlugin {
   }
 
   private void deliverThirdPartyToken(String userToken, CallbackContext callbackContext) {
-      PopdeemSDK.deliverThirdPartyToken(userToken);
+      PopdeemSDK.setThirdPartyToken(userToken);
   }
 
 }
