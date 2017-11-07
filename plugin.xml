@@ -40,6 +40,7 @@
       		</config-file>
 
           <source-file src="src/android/Popdeem.java" target-dir="src/com/popdeem/cordova/plugin" />
+          <source-file src="src/android/PopdeemApplication.java" target-dir="src/com/popdeem/cordova/plugin" />
         </platform>
 
 

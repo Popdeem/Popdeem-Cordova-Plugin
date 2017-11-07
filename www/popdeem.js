@@ -6,5 +6,9 @@ module.exports = {
   pushPopdeemHome: function (successCallback, errorCallback) {
     cordova.exec(successCallback, errorCallback, "Popdeem", "pushPopdeemHome", []);
   }
+  ,
+  deliverThirdPartyToken: function (userToken, successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "Popdeem", "deliverThirdPartyToken", [userToken]);
+  }
 
 };

@@ -4,5 +4,6 @@
 
 - (void) enableSocialLogin:(CDVInvokedUrlCommand*)command;
 - (void) pushPopdeemHome:(CDVInvokedUrlCommand*)command;
+- (void) deliverThirdPartyToken:(CDVInvokedUrlCommand*)command;
 
 @end

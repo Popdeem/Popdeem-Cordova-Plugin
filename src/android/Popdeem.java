@@ -10,7 +10,7 @@ import org.json.JSONException;
 
 public class Popdeem extends CordovaPlugin {
 
-    private static final int LOGIN_VIEW_ID = 10101010;
+  private static final int LOGIN_VIEW_ID = 10101010;
 
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -25,6 +25,11 @@ public class Popdeem extends CordovaPlugin {
           callbackContext.success();
            return true;
         }
+      if ("deliverThirdPartyToken".equals(action)){
+          this.deliverThirdPartyToken(args.getString(0), callbackContext);
+          callbackContext.success();
+           return true;
+        }
       return false;  // Returning false results in a "MethodNotFound" error.
   }
 
@@ -34,6 +39,10 @@ public class Popdeem extends CordovaPlugin {
 
   private void pushPopdeemHome(CallbackContext callbackContext) {
       PopdeemSDK.showHomeFlow(this.cordova.getActivity());
+  }
+
+  private void deliverThirdPartyToken(String userToken, CallbackContext callbackContext) {
+      PopdeemSDK.deliverThirdPartyToken(userToken);
   }
 
 }
