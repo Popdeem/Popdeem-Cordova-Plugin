@@ -28,7 +28,7 @@
       </platform>
 
       <platform name="android">
-
+          <framework src="com.popdeem.sdk:sdk:1.2.17" />
           <framework src="src/android/popdeem.gradle" custom="true" type="gradleReference"/>
           <config-file parent="/*" target="res/xml/config.xml">
       			<feature name="Popdeem">
@@ -37,7 +37,6 @@
       			</feature>
       		</config-file>
 
-          <resource-file src="src/sdk-debug.aar" target="../../libs/sdk-debug.aar" />
           <source-file src="src/android/Popdeem.java" target-dir="src/com/popdeem/cordova/plugin" />
           <source-file src="src/android/CordovaFragment.java" target-dir="src/com/popdeem/cordova/plugin" />
           <source-file src="src/android/PopdeemActivity.java" target-dir="src/com/popdeem/cordova/plugin" />
