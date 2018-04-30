@@ -31,7 +31,7 @@ import com.popdeem.cordova.plugin.PopdeemApplication;
 public class PopdeemActivity extends FragmentActivity
 {
     private static final String TAG = "PopdeemActivity";
-    int counter
+    int counter;
     public CordovaFragment currentFragment;
 
     @Override
