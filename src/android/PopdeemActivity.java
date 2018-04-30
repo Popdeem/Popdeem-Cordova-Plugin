@@ -18,7 +18,7 @@
  */
 
 /** extends CordovaActivity */
-
+package com.popdeem.cordova.plugin;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.os.Build;
