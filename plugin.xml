@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="popdeem-cordova-plugin" version="0.9.25">
+        id="popdeem-cordova-plugin" version="0.9.26">
     <name>Popdeem SDK</name>
     <description>Popdeem SDK Cordova Plugin</description>
     <license>Apache 2.0</license>
@@ -29,7 +29,6 @@
 
       <platform name="android">
 
-          <framework src="com.popdeem.sdk:sdk:1.2.16" />
           <framework src="src/android/popdeem.gradle" custom="true" type="gradleReference"/>
           <config-file parent="/*" target="res/xml/config.xml">
       			<feature name="Popdeem">
@@ -38,9 +37,10 @@
       			</feature>
       		</config-file>
 
+          <resource-file src="src/sdk-debug.aar" target="../../libs/sdk-debug.aar" />
           <source-file src="src/android/Popdeem.java" target-dir="src/com/popdeem/cordova/plugin" />
+          <source-file src="src/android/CordovaFragment.java" target-dir="src/com/popdeem/cordova/plugin" />
+          <source-file src="src/android/PopdeemActivity.java" target-dir="src/com/popdeem/cordova/plugin" />
           <source-file src="src/android/PopdeemApplication.java" target-dir="src/com/popdeem/cordova/plugin" />
         </platform>
-
-
 </plugin>
