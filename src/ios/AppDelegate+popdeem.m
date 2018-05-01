@@ -45,22 +45,6 @@
 
 }
 
-- (void) swizzled_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  [self swizzled_application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-	[PopdeemSDK application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-}
-
-
-- (void) swizzled_application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-  [self swizzled_application: application didFailToRegisterForRemoteNotificationsWithError: error];
-	[PopdeemSDK application:application didFailToRegisterForRemoteNotificationsWithError:error];
-}
-
-- (void) swizzled_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-  [self swizzled_application:application didReceiveRemoteNotification: userInfo];
-	[PopdeemSDK handleRemoteNotification:userInfo];
-}
-
 - (BOOL) swizzled_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // This actually calls the original method over in AppDelegate. Equivilent to calling super
 	// on an overrided method, this is not recursive, although it appears that way?
@@ -84,6 +68,22 @@
   }
 
   return result;
+}
+
+- (void) swizzled_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [self swizzled_application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+	[PopdeemSDK application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+
+- (void) swizzled_application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  [self swizzled_application:application didFailToRegisterForRemoteNotificationsWithError:error];
+	[PopdeemSDK application:application didFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+- (void) swizzled_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+  [self swizzled_application:application didReceiveRemoteNotification:userInfo];
+	[PopdeemSDK handleRemoteNotification:userInfo];
 }
 
 - (BOOL) swizzled_application:(UIApplication *)application
