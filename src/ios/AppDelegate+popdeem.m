@@ -82,8 +82,12 @@
 }
 
 - (void) swizzled_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-  [self swizzled_application:application didReceiveRemoteNotification:userInfo];
-	[PopdeemSDK handleRemoteNotification:userInfo];
+  if ([[userInfo objectForKey:@"sender"] isEqualToString:@"popdeem"]) {
+    [PopdeemSDK handleRemoteNotification:userInfo];
+    return;
+  } else {
+    [self swizzled_application:application didReceiveRemoteNotification:userInfo];
+  }
 }
 
 - (BOOL) swizzled_application:(UIApplication *)application
