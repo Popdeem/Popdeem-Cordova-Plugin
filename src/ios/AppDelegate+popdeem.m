@@ -23,6 +23,42 @@
     swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didFinishLaunchingWithOptions:));
     method_exchangeImplementations(original, swizzled);
 
+    original = class_getInstanceMethod(self, @selector(application: openURL: sourceApplication: annotation:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_application: openURL: sourceApplication: annotation:));
+    method_exchangeImplementations(original, swizzled);
+
+    original = class_getInstanceMethod(self, @selector(applicationDidBecomeActive:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_applicationDidBecomeActive:));
+    method_exchangeImplementations(original, swizzled);
+
+    original = class_getInstanceMethod(self, @selector(application: didRegisterForRemoteNotificationsWithDeviceToken:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didRegisterForRemoteNotificationsWithDeviceToken:));
+    method_exchangeImplementations(original, swizzled);
+
+    original = class_getInstanceMethod(self, @selector(application: didFailToRegisterForRemoteNotificationsWithError:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didFailToRegisterForRemoteNotificationsWithError:));
+    method_exchangeImplementations(original, swizzled);
+
+    original = class_getInstanceMethod(self, @selector(application: didReceiveRemoteNotification:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didReceiveRemoteNotification:));
+    method_exchangeImplementations(original, swizzled);
+
+}
+
+- (void) swizzled_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [self swizzled_application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+	[PopdeemSDK application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+
+- (void) swizzled_application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  [self swizzled_application: application didFailToRegisterForRemoteNotificationsWithError: error];
+	[PopdeemSDK application:application didFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+- (void) swizzled_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+  [self swizzled_application:application didReceiveRemoteNotification: userInfo];
+	[PopdeemSDK handleRemoteNotification:userInfo];
 }
 
 - (BOOL) swizzled_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -50,10 +86,13 @@
   return result;
 }
 
-- (BOOL) application:(UIApplication *)application
+- (BOOL) swizzled_application:(UIApplication *)application
              openURL:(NSURL *)url
    sourceApplication:(NSString *)sourceApplication
           annotation:(id)annotation {
+
+  BOOL result = [self swizzled_application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+  if (result) return result;
 
   BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:application
                                                                    openURL:url
@@ -69,7 +108,8 @@
   return NO;
 }
 
-- (void) applicationDidBecomeActive:(UIApplication *)application {
+- (void) swizzled_applicationDidBecomeActive:(UIApplication *)application {
+  [self swizzled_applicationDidBecomeActive: application];
   [FBSDKAppEvents activateApp];
 }
 
