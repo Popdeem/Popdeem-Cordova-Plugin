@@ -43,6 +43,11 @@ public class Popdeem extends CordovaPlugin {
           callbackContext.success();
            return true;
         }
+        if ("logMoment".equals(action)){
+          this.logMoment(args.getString(0), callbackContext);
+          callbackContext.success();
+           return true;
+        }
       return false;  // Returning false results in a "MethodNotFound" error.
   }
 
@@ -61,6 +66,10 @@ public class Popdeem extends CordovaPlugin {
 
   private void deliverThirdPartyToken(String userToken, CallbackContext callbackContext) {
       PopdeemSDK.setThirdPartyToken(userToken);
+  }
+
+  private void logMoment(String momentString, CallbackContext callbackContext) {
+      PopdeemSDK.logMoment(momentString);
   }
 
 }
