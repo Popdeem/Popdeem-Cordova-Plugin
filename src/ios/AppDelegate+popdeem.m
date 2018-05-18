@@ -57,6 +57,10 @@
   //Popdeem Setup
   NSError *keyError;
   NSString *popdeemApiKey = [PDUtils getPopdeemApiKey:&keyError];
+
+  if ([[UIApplication sharedApplication] isRegisteredForRemoteNotifications]) {
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+  }
   if (popdeemApiKey != nil) {
     [PopdeemSDK withAPIKey:popdeemApiKey];
     NSString *popdeemThemeName = [PDUtils getThemeFileName];
