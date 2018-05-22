@@ -26,7 +26,7 @@
 }
 
 - (void) deliverThirdPartyToken:(CDVInvokedUrlCommand*)command {
-  NSString *userToken = [[[command arguments] objectAtIndex:0] stringValue];
+  NSString *userToken = [[command arguments] objectAtIndex:0];
   [PopdeemSDK setThirdPartyUserToken:userToken];
   CDVPluginResult* result = [CDVPluginResult
                             resultWithStatus:CDVCommandStatus_OK
