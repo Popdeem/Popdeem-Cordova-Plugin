@@ -10,6 +10,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import android.util.Log;
 import com.popdeem.sdk.core.utils.PDLog;
+import com.popdeem.sdk.core.api.PDAPICallback;
+import com.popdeem.sdk.core.api.PDAPIClient;
+import com.popdeem.sdk.core.api.response.PDBasicResponse;
 
 public class Popdeem extends CordovaPlugin {
 
