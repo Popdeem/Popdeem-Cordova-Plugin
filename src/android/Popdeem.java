@@ -9,6 +9,7 @@ import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;
 import org.json.JSONException;
 import android.util.Log;
+import com.popdeem.sdk.core.utils.PDLog;
 
 public class Popdeem extends CordovaPlugin {
 
@@ -69,7 +70,17 @@ public class Popdeem extends CordovaPlugin {
   }
 
   private void logMoment(String momentString, CallbackContext callbackContext) {
-      PopdeemSDK.logMoment(momentString);
+      PopdeemSDK.logMoment(momentString, new PDAPICallback<PDBasicResponse>() {
+            @Override
+            public void success(PDBasicResponse response) {
+                PDLog.d(PDAPIClient.class, response.toString());
+            }
+
+            @Override
+            public void failure(int statusCode, Exception e) {
+                PDLog.w(PDAPIClient.class, "code=" + statusCode + ", message=" + e.getMessage());
+            }
+        });
   }
 
 }
