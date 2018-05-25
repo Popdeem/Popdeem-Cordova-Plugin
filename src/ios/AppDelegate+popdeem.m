@@ -42,6 +42,14 @@
     original = class_getInstanceMethod(self, @selector(application: didReceiveRemoteNotification:));
     swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didReceiveRemoteNotification:));
     method_exchangeImplementations(original, swizzled);
+    
+    original = class_getInstanceMethod(self, @selector(userNotificationCenter: willPresentNotification: withCompletionHandler:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_userNotificationCenter: willPresentNotification: withCompletionHandler:));
+    method_exchangeImplementations(original, swizzled);
+    
+    original = class_getInstanceMethod(self, @selector(application: didRegisterUserNotificationSettings:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didRegisterUserNotificationSettings:));
+    method_exchangeImplementations(original, swizzled);
 
 }
 
@@ -57,6 +65,7 @@
   //Popdeem Setup
   NSError *keyError;
   NSString *popdeemApiKey = [PDUtils getPopdeemApiKey:&keyError];
+    [PopdeemSDK registerForPushNotificationsApplication:application];
 
   if ([[UIApplication sharedApplication] isRegisteredForRemoteNotifications]) {
     [[UIApplication sharedApplication] registerForRemoteNotifications];
@@ -92,6 +101,21 @@
   } else {
     [self swizzled_application:application didReceiveRemoteNotification:userInfo];
   }
+}
+
+- (void)swizzled_application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    [self swizzled_application:application didRegisterUserNotificationSettings:notificationSettings];
+    [application registerForRemoteNotifications];
+}
+
+-(void)swizzled_userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
+    NSDictionary *userInfo = notification.request.content.userInfo;
+    if ([[userInfo objectForKey:@"sender"] isEqualToString:@"popdeem"]) {
+        [PopdeemSDK handleRemoteNotification:userInfo];
+        return;
+    } else {
+        [self swizzled_userNotificationCenter:center willPresentNotification:notification withCompletionHandler:completionHandler];
+    }
 }
 
 - (BOOL) swizzled_application:(UIApplication *)application
