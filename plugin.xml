@@ -13,7 +13,7 @@
 
     <platform name="ios">
 
-        <framework src="PopdeemSDK" type="podspec" spec="~> 1.1.17" />
+        <framework src="PopdeemSDK" type="podspec" spec="~> 1.1.20" />
         <framework src="FBSDKCoreKit" type="podspec" spec="< 4.30" />
         <framework src="FBSDKLoginKit" type="podspec" spec="< 4.30" />
 
