@@ -96,4 +96,11 @@ public class PopdeemActivity extends FragmentActivity
                                             int[] grantResults) {
         currentFragment.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+        FragmentManager fm = getFragmentManager();
+        fm.findFragmentByTag("PDUISocialMultiLoginFragment").onActivityResult(requestCode, resultCode, data);
+    }
 }
