@@ -61,7 +61,7 @@
 
 - (BOOL) swizzled_application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options
 {
-  BOOL result = [self swizzled_application:application openURL:url options:options];
+  BOOL result = [self swizzled_application:app openURL:url options:options];
   if (result) return result;
 
   BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url options:options
