@@ -13,9 +13,10 @@
 
     <platform name="ios">
 
-        <framework src="PopdeemSDK" type="podspec" spec="1.1.21" />
+        <framework src="PopdeemSDK" type="podspec" spec="1.1.28" />
         <framework src="FBSDKCoreKit" type="podspec" spec="< 4.30" />
         <framework src="FBSDKLoginKit" type="podspec" spec="< 4.30" />
+        <framework src="FBSDKShareKit" type="podspec" spec="< 4.30" />
 
         <config-file target="config.xml" parent="/widget">
           <feature name="Popdeem">

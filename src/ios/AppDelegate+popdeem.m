@@ -23,8 +23,8 @@
     swizzled = class_getInstanceMethod(self, @selector(swizzled_application: didFinishLaunchingWithOptions:));
     method_exchangeImplementations(original, swizzled);
 
-    original = class_getInstanceMethod(self, @selector(application: openURL: sourceApplication: annotation:));
-    swizzled = class_getInstanceMethod(self, @selector(swizzled_application: openURL: sourceApplication: annotation:));
+    original = class_getInstanceMethod(self, @selector(application: openURL: options:));
+    swizzled = class_getInstanceMethod(self, @selector(swizzled_application: openURL: options:));
     method_exchangeImplementations(original, swizzled);
 
     original = class_getInstanceMethod(self, @selector(applicationDidBecomeActive:));
@@ -59,25 +59,22 @@
   return result;
 }
 
-- (BOOL) swizzled_application:(UIApplication *)application
-             openURL:(NSURL *)url
-   sourceApplication:(NSString *)sourceApplication
-          annotation:(id)annotation {
-
-  BOOL result = [self swizzled_application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+- (BOOL) swizzled_application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options
+{
+  BOOL result = [self swizzled_application:application openURL:url options:options];
   if (result) return result;
 
-  BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                                   openURL:url
-                                                         sourceApplication:sourceApplication
-                                                                annotation:annotation];
-
-  if (wasHandled) return wasHandled;
-
-  if ([PopdeemSDK canOpenUrl:url sourceApplication:sourceApplication annotation:annotation]) {
-    return [PopdeemSDK application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+  BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url options:options
+                  ];
+  // Add any custom logic here.
+  if (handled) {
+    return handled;
   }
-
+  
+  if ([PopdeemSDK application:app canOpenUrl:url options:options]) {
+    return [PopdeemSDK application:app openURL:url options:options];
+  }
+  
   return NO;
 }
 
