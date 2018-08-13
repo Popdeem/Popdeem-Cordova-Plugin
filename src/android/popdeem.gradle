@@ -1,4 +1,4 @@
-allprojects {
+allprojects{
     repositories {
         maven { url 'https://maven.fabric.io/public' }
         maven { url "https://jitpack.io" }
@@ -8,6 +8,7 @@ allprojects {
     }
     dependencies {
         compile 'com.android.support:appcompat-v7:27.1.1'
+        compile 'com.android.support:support-v4:27.1.1'
         compile 'com.android.support:design:27.1.1'
         compile 'com.android.support:cardview-v7:27.1.1'
         compile 'com.android.support.constraint:constraint-layout:1.0.2'

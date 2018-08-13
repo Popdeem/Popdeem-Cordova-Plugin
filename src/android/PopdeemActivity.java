@@ -20,6 +20,7 @@
 /** extends CordovaActivity */
 package com.popdeem.cordova.plugin;
 import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import com.popdeem.cordova.plugin.CordovaFragment;
 import com.popdeem.cordova.plugin.PopdeemApplication;
+import android.content.Intent;
+
 
 public class PopdeemActivity extends FragmentActivity
 {
@@ -44,6 +47,7 @@ public class PopdeemActivity extends FragmentActivity
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.add(android.R.id.content, currentFragment);
         ft.commit();
+
     }
 
     /**
@@ -100,7 +104,9 @@ public class PopdeemActivity extends FragmentActivity
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode,resultCode,data);
-        FragmentManager fm = getFragmentManager();
-        fm.findFragmentByTag("PDUISocialMultiLoginFragment").onActivityResult(requestCode, resultCode, data);
+        Fragment frag = getSupportFragmentManager().findFragmentByTag("PDUISocialMultiLoginFragment");
+        if(frag!=null){
+            getSupportFragmentManager().findFragmentByTag("PDUISocialMultiLoginFragment").onActivityResult(requestCode, resultCode, data);
+        }
     }
 }
