@@ -78,6 +78,24 @@
   return NO;
 }
 
+- (BOOL)application:(UIApplication*)app openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation
+{
+  [self swizzled_application:app openURL:url sourceApplication:sourceApplication annotation:annotation];
+
+  BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url sourceApplication:sourceApplication annotation:annotation
+                  ];
+  // Add any custom logic here.
+  if (handled) {
+    return handled;
+  }
+  
+  if ([PopdeemSDK application:app canOpenUrl:url sourceApplication:sourceApplication annotation:annotation]) {
+    return [PopdeemSDK application:app openURL:url sourceApplication:sourceApplication annotation:annotation];
+  }
+  
+  return NO;
+}
+
 - (void) swizzled_applicationDidBecomeActive:(UIApplication *)application {
   [self swizzled_applicationDidBecomeActive: application];
   [FBSDKAppEvents activateApp];

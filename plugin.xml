@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="popdeem-cordova-plugin" version="0.1.15">
+        id="popdeem-cordova-plugin" version="0.1.16">
     <name>Popdeem SDK</name>
     <description>Popdeem SDK Cordova Plugin</description>
     <license>Apache 2.0</license>
@@ -14,10 +14,10 @@
     <platform name="ios">
 
 
-        <framework src="PopdeemSDK" type="podspec" spec="1.1.40" />
-        <framework src="FBSDKCoreKit" type="podspec" spec="< 4.30" />
-        <framework src="FBSDKLoginKit" type="podspec" spec="< 4.30" />
-        <framework src="FBSDKShareKit" type="podspec" spec="< 4.30" />
+        <framework src="PopdeemSDK" type="podspec" spec="1.1.41" />
+        <framework src="FBSDKCoreKit" type="podspec" spec="4.38.0" />
+        <framework src="FBSDKLoginKit" type="podspec" spec="4.38.0" />
+        <framework src="FBSDKShareKit" type="podspec" spec="4.38.0" />
 
         <config-file target="config.xml" parent="/widget">
           <feature name="Popdeem">
