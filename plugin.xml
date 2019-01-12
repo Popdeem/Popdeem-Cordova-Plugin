@@ -14,7 +14,7 @@
     <platform name="ios">
 
 
-        <framework src="PopdeemSDK" type="podspec" spec="1.1.41" />
+        <framework src="PopdeemSDK" type="podspec" spec="1.1.42" />
         <framework src="FBSDKCoreKit" type="podspec" spec="4.38.0" />
         <framework src="FBSDKLoginKit" type="podspec" spec="4.38.0" />
         <framework src="FBSDKShareKit" type="podspec" spec="4.38.0" />
