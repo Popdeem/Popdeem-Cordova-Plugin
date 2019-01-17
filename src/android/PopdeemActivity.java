@@ -96,9 +96,9 @@ public class PopdeemActivity extends FragmentActivity
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[],
-                                            int[] grantResults) {
-        currentFragment.onRequestPermissionsResult(requestCode,permissions,grantResults);
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+       super.onRequestPermissionsResult(requestCode,permissions,grantResults);
+       currentFragment.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
 
     @Override
