@@ -84,7 +84,7 @@
 
 - (BOOL)swizzled_application:(UIApplication*)app openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation
 {
-    [self swizzled_application:app openURL:url sourceApplication:sourceApplication annotation:annotation ];
+    
     
     BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url sourceApplication:sourceApplication annotation:annotation
                     ];
@@ -92,6 +92,8 @@
     if (handled) {
         return handled;
     }
+    BOOL result = [self swizzled_application:app openURL:url sourceApplication:sourceApplication annotation:annotation ];
+    if (result) return result;
     
     if ([PopdeemSDK application:app canOpenUrl:url sourceApplication:sourceApplication annotation:annotation]) {
         return [PopdeemSDK application:app openURL:url sourceApplication:sourceApplication annotation:annotation];
