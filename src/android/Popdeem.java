@@ -24,7 +24,7 @@ public class Popdeem extends CordovaPlugin {
        if ("enableSocialLogin".equals(action)) {
            Activity context =this.cordova.getActivity(); 
            Log.i("enableSocialLogin", "enableSocialMultiLogin: ");
-           this.enableSocialLogin(args.getInt(0), callbackContext);
+           this.enableSocialLogin(args.getInt(0), 1, 1, true, callbackContext);
            callbackContext.success();
            return true;
        }
@@ -60,8 +60,8 @@ public class Popdeem extends CordovaPlugin {
       PopdeemSDK.pushCordovaLogin(this.cordova.getActivity(), numberOfPrompts);
   }
 
-  private void pushSocialLogin(int numberOfPrompts, CallbackContext callbackContext) {
-      PopdeemSDK.enableSocialMultiLogin(this.cordova.getActivity().getClass(), numberOfPrompts);
+  private void pushSocialLogin(int numberOfPrompts, int animationIn, int animationOut, Boolean showRewardsAfterLogin, CallbackContext callbackContext) {
+      PopdeemSDK.enableSocialMultiLogin(this.cordova.getActivity().getClass(), numberOfPrompts, animationIn, animationOut, showRewardsAfterLogin);
   }
 
   private void pushPopdeemHome(CallbackContext callbackContext) {

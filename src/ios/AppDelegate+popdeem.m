@@ -77,6 +77,9 @@
     return NO;
 }
 
+
+
+
 - (void) swizzled_applicationDidBecomeActive:(UIApplication *)application {
     [self swizzled_applicationDidBecomeActive: application];
     [FBSDKAppEvents activateApp];
