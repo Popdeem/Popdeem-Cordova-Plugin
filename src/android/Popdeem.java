@@ -57,7 +57,7 @@ public class Popdeem extends CordovaPlugin {
 
   private void enableSocialLogin(int numberOfPrompts, CallbackContext callbackContext) {
       PopdeemSDK.enableSocialMultiLogin(this.cordova.getActivity().getClass(), numberOfPrompts, true);
-      PopdeemSDK.pushCordovaLogin(this.cordova.getActivity(), numberOfPrompts, true);
+      PopdeemSDK.pushCordovaLogin(this.cordova.getActivity(), numberOfPrompts);
   }
 
   private void pushSocialLogin(int numberOfPrompts, CallbackContext callbackContext) {
