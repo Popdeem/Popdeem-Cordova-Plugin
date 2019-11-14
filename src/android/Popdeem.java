@@ -24,7 +24,7 @@ public class Popdeem extends CordovaPlugin {
        if ("enableSocialLogin".equals(action)) {
            Activity context =this.cordova.getActivity(); 
            Log.i("enableSocialLogin", "enableSocialMultiLogin: ");
-           this.enableSocialLogin(args.getInt(0), 1, 1, true, callbackContext);
+           this.enableSocialLogin(args.getInt(0), callbackContext);
            callbackContext.success();
            return true;
        }
@@ -55,13 +55,13 @@ public class Popdeem extends CordovaPlugin {
       return false;  // Returning false results in a "MethodNotFound" error.
   }
 
-  private void enableSocialLogin(int numberOfPrompts, int animationIn, int animationOut, Boolean showRewardsAfterLogin, CallbackContext callbackContext) {
-      PopdeemSDK.enableSocialMultiLogin(this.cordova.getActivity().getClass(), numberOfPrompts, animationIn, animationOut, showRewardsAfterLogin);
-      PopdeemSDK.pushCordovaLogin(this.cordova.getActivity(), numberOfPrompts, animationIn, animationOut, showRewardsAfterLogin);
+  private void enableSocialLogin(int numberOfPrompts, CallbackContext callbackContext) {
+      PopdeemSDK.enableSocialMultiLogin(this.cordova.getActivity().getClass(), numberOfPrompts);
+      PopdeemSDK.pushCordovaLogin(this.cordova.getActivity(), numberOfPrompts);
   }
 
-  private void pushSocialLogin(int numberOfPrompts, int animationIn, int animationOut, Boolean showRewardsAfterLogin, CallbackContext callbackContext) {
-      PopdeemSDK.enableSocialMultiLogin(this.cordova.getActivity().getClass(), numberOfPrompts, animationIn, animationOut, showRewardsAfterLogin);
+  private void pushSocialLogin(int numberOfPrompts, CallbackContext callbackContext) {
+      PopdeemSDK.enableSocialMultiLogin(this.cordova.getActivity().getClass(), numberOfPrompts);
   }
 
   private void pushPopdeemHome(CallbackContext callbackContext) {
