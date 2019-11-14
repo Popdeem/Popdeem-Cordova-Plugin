@@ -30,7 +30,7 @@ allprojects{
             force 'com.android.tools.build:gradle:3.0.1'
             force 'com.facebook.android:facebook-android-sdk:4.34.0'
 
-            force 'com.popdeem.sdk:sdk:1.3.22'
+            force 'com.popdeem.sdk:sdk:1.5.3'
         }
     }
 }
